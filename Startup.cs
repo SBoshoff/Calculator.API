@@ -14,7 +14,12 @@ using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Calculator.API.Domain.Services;
+using Calculator.API.Domain.Models;
 using Calculator.API.Domain.Services.Interfaces;
+using Calculator.API.Domain.Repositories;
+using Calculator.API.Domain.Repositories.Interfaces;
+using Calculator.API.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace Calculator.API
 {
@@ -33,7 +38,15 @@ namespace Calculator.API
 
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Latest);
 
+            services.AddDbContext<ApplicationDBContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+
             services.AddScoped<ICalculatorService, CalculatorService>();
+            services.AddScoped<IAccessLogService, AccessLogService>();
+            services.AddScoped<IRepository<AccessLog>, AccessLogRepository>();
 
             // services.AddControllers();
             // services.AddSwaggerGen(c =>
