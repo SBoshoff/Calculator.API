@@ -13,7 +13,11 @@ namespace Calculator.API.Domain.Services
                 return "N/A";
             }
 
-            return new DataTable().Compute(expression, "").ToString();
+            string result = new DataTable().Compute(expression, "").ToString();
+
+            result = result.Replace(",", ".");
+
+            return result;
         }
     }
 }

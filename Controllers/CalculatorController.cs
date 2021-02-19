@@ -15,7 +15,7 @@ namespace Calculator.API.Controllers
             _calculatorService = calculatorService;    
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<string> calculate(string expression)
         {
             string result = await _calculatorService.calculate(expression);

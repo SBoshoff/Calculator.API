@@ -20,6 +20,7 @@ namespace Calculator.API
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -43,7 +44,6 @@ namespace Calculator.API
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // app.UseFileServer();
 
             if (env.IsDevelopment())
             {
@@ -54,20 +54,15 @@ namespace Calculator.API
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+
+            // app.UseHttpsRedirection();
+            
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseMvc();
 
             app.UseFileServer();
-
-            // app.UseRouting();
-
-            // app.UseAuthorization();
-
-            // app.UseEndpoints(endpoints =>
-            // {
-            //     endpoints.MapControllers();
-            // });
         }
     }
 }
