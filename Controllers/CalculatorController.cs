@@ -19,6 +19,13 @@ namespace Calculator.API.Controllers
             _accessLogService = accessLogService;    
         }
 
+        /// <summary>
+        ///     API POST function to receive expression as string.
+        ///     Generates user IP address and passes it to AccessLogService.
+        ///     Passes expression to Calculator Service and returns result.
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<string> calculate(string expression)
         {

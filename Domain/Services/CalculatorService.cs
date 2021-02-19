@@ -7,6 +7,7 @@ using System.Data;
 namespace Calculator.API.Domain.Services
 {
     public class CalculatorService : ICalculatorService {
+
         public async Task<string> calculate(string expression)
         {
             if (expression == null) {
