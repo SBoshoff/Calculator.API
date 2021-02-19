@@ -2,6 +2,7 @@ const calculator = document.getElementById('calculator');
 const keys = calculator.querySelector('.keys');
 const display = calculator.querySelector('.result');
 
+var decimal = false;
 var valueList = [];
 
 keys.addEventListener('click', e => {
@@ -16,24 +17,29 @@ keys.addEventListener('click', e => {
 
         if (!action) {
             calculator.dataset.previousKey = 'number';
-            if (display.textContent === '0' || previousKey === 'operator') {
+            if (display.textContent === '0' || previousKey === 'operator' || previousKey === 'equal') {
                 display.textContent = content;
             } else {
                 display.textContent = number + content;
             }
         }
         if (action === '.') {
-            calculator.dataset.previousKey = 'decimal';
-            display.textContent = number + '.';
+            if (!decimal){
+                decimal = true;
+                calculator.dataset.previousKey = 'decimal';
+                display.textContent = number + '.';
+            }
         }
         if (action === '+' || action === '-' || action === '*' || action === '/') {
             calculator.dataset.previousKey = 'operator';
+            decimal = false;
 
             valueList.push(number, action);
             console.log(valueList);
         }
         if (action === 'equal') {
             calculator.dataset.previousKey = 'equal';
+            decimal = false;
 
             if (calculator.dataset.previousKey === 'equal') {
                 valueList.push(number);
@@ -42,9 +48,11 @@ keys.addEventListener('click', e => {
             calculate().then(result => {
                 display.textContent =  result;
             });
+            valueList = [];
         }
         if (action === 'clear') {
             calculator.dataset.previousKey = 'clear';
+            decimal = false;
 
             display.textContent = 0;
             valueList = [];

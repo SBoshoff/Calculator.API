@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a basic calculator application that runs off a .NET Framework API. Values are input on the web page and the calculations are performed in the API.
+This is a basic calculator application that runs off a .NET Framework API. Values are input on the web page and the calculations are performed in the API. A request log consisting of the requestor's IP address and date of access are stored in a SQL database for each calculation.
 
 ## What was used
 
@@ -13,10 +13,10 @@ This is a basic calculator application that runs off a .NET Framework API. Value
 
 ## Setting up the DB
 
-* In the project root, open a Powershell terminal/Nuget Package Manager console
-* Run the following 2 commands
-  * Add-Migration any-name
-  * Update-Database
+* In the project root, open a Powershell terminal or command prompt.
+* Run the following command
+  * `Update-Database` for Powershell
+  * `dotnet ef database update` for terminal
 * Open your MSSQL Management Studio in a Windows authenticated server (localhost) and confirm that the database 'CalculatorSheldonBoshoff' with the table 'AccessLogs' exists.
 
 ## Starting the app
@@ -35,4 +35,5 @@ This is a basic calculator application that runs off a .NET Framework API. Value
 
 ## Notes
 
-Due to the fact that the application is running off localhost, it is likely that all logged IP addresses will reflect as 0.0.0.1. This might not be the case in a live environment.
+* Due to the fact that the application is running off localhost, it is likely that all logged IP addresses will reflect as 0.0.0.1. This might not be the case in a live environment.
+* The speed of the calculation is dependent on how quickly the app can write to the DB. There might be a delay between clicking equals and seeing the result.
