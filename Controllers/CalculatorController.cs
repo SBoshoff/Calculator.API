@@ -23,7 +23,7 @@ namespace Calculator.API.Controllers
         public async Task<string> calculate(string expression)
         {
             string IpAddress = HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
-            await _accessLogService.logRequest(IpAddress);
+            _accessLogService.logRequest(IpAddress);
             string result = await _calculatorService.calculate(expression);
             return result;
         }
