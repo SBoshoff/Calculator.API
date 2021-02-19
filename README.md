@@ -30,7 +30,7 @@ This is a basic calculator application that runs off a .NET Framework API. Value
 
 ### Option 2
 * Open the project in Visual Studio 2019
-* Run IIS Express. http://localhost:5000 should open in your browser automatically.
+* Run IIS Express (or Calculator.API, whichever is showing). http://localhost:5000 should open in your browser automatically.
 
 ## Notes
 
