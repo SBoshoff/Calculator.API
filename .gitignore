@@ -231,3 +231,7 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+obj/Release/net5.0/Calculator.API.pdb
+obj/Release/net5.0/Calculator.API.dll
+obj/Release/net5.0/Calculator.API.csproj.FileListAbsolute.txt
+Calculator.API.csproj.user
